@@ -1,0 +1,33 @@
+<div style="min-height: 200vh; overflow: hidden; margin-top: -70px;">
+    <div style="width: 100%; min-height: 200vh">
+        <div class="row">
+
+            <div class="col-12" style="background-color: rgba(0,0,0,1); padding: 0vmin;">
+                <div style="min-height: 200vh; width: 100%;">
+                    <div id="blocDeImage"
+                        style="border-radius: 0px ; border: 0px solid #eee ; min-height: 80vh; overflow : hidden">
+                        <img style="width: 100%" [src]="oeuvre.src" alt="" />
+                    </div>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100%; padding: 5vmin; position: absolute; top:5vh">
+        <div id="trip" style="width: 100%; text-align: center">
+            <div style="padding-top: 20px">
+                <a (click)="jaime()" class="btn btn-lg btn-dark" style="cursor: pointer!important;">
+                    <fa name="shopping-cart"></fa>
+                </a>
+                <a (click)="jaimePas()" class="btn btn-lg btn-dark" style="cursor: pointer!important;">
+                    <span style="padding-left: 10px; color: #aaa">
+                        <fa name="shopping-cart"></fa>
+                    </span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>

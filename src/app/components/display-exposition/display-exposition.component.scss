@@ -1,0 +1,25 @@
+.hauteur_exposition {
+    height: 40vmin
+}
+.float_droite {
+    float: right;
+}
+@media only screen and (max-width: 500px) {
+    
+    .hauteur_exposition {
+        height: 40vmin
+    }
+
+    .titre1 {
+        font-size: 1.3em;
+    }
+    .titre2 {
+        font-size: 1.0em;
+        margin-top: -10px;
+    }
+    .float_droite {
+        float: none;
+        display: block;
+    }
+    
+}

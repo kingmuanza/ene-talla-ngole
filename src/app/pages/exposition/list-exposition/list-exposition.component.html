@@ -1,0 +1,71 @@
+<div style="margin-top: -70px;">
+    <div class="arriereplan" style="min-height: 30vmin; border-bottom: 0px solid #333; overflow: hidden">
+        <div class="hideOnMobile"
+            style=" background: linear-gradient(to top, rgba(0,10,0,0.8), #0f9b0f); padding-top: 10vmin; padding-bottom: 20vmin;">
+            <div class="contenu hideOnMobile">
+                <h1 id="titre_page" class="display-4 africa" style="color: #fff; cursor: pointer!important;">
+                    <b>Liste des Expositions</b>
+
+                </h1>
+                <p class="lead" style="color: #fcfcfc;margin-top: -10px;">
+                    Découvrez toutes les expositions à venir
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="expositions">
+    <div style="min-height: 100vh; margin-top: -20vmin">
+        <div class="contenu">
+            <div class="row">
+                <ng-container *ngFor="let exposition of expositions; index as i">
+                    <div (click)="ouvrir(i)" class="col-lg-4 col-6" style="padding: 10px;">
+                        <app-display-exposition [exposition]="exposition"></app-display-exposition>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-body" style="padding-top: 0; padding-bottom: 0;">
+                <div class="row">
+                    <div class="col-lg-8" style="margin:0; padding:0">
+                        <img [src]="exposition.photo" style="width: 100%">
+                    </div>
+                    <div class="col-lg-4" style="margin:0; padding:0">
+                        <div style="padding: 20px; padding-left: 30px;">
+                            <h1 class="africa">
+                                {{exposition.nom}}
+
+                            </h1>
+                            <p class="lead"
+                                style="font-size: 1.2em; margin-top: -10px; cursor: pointer">
+                                {{exposition.lieu}}
+                                {{exposition.pays}}
+                            </p>
+                            <p style="margin-top: -10px;">
+                                <app-display-notation notation="exposition.notation"></app-display-notation>
+                            </p>
+
+                            <p class="lead" style="color: #ccc">
+                                Du {{toDate(exposition.dateDebut) | date:'dd-MM-yyyy'}} au
+                {{toDate(exposition.dateFin) | date:'dd-MM-yyyy'}}
+                                
+                            </p>
+                            <h1 class="africa" style="padding-top: 0px;">
+                                
+                            </h1>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.arriereplan {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.contour-jaune {
+    border: 2px solid yellow
+}
+
+@media only screen and (max-width: 500px) {
+    
+    .arriereplan {
+        background: #fff !important;
+    }
+    
+}

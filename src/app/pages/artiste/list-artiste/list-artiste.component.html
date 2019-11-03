@@ -1,0 +1,27 @@
+<div style="margin-top: -70px;">
+    <div class="arriereplan" style="min-height: 30vmin; border-bottom: 0px solid #333; overflow: hidden">
+        <div class="hideOnMobile"
+            style=" background: linear-gradient(to top, rgba(0,10,0,0.8), #0f9b0f); padding-top: 10vmin; padding-bottom: 20vmin;">
+            <div class="contenu hideOnMobile">
+                <h1 id="titre_page" class="display-4 africa" style="color: #fff; cursor: pointer!important;">
+                    <b>Liste des artistes</b>
+
+                </h1>
+                <p class="lead" style="color: #fcfcfc;margin-top: -10px;">
+                    Découvrez toutes les artistes disponibles sur notre site
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="artistes">
+    <div style="min-height: 100vh; margin-top: -20vmin">
+        <div class="contenu">
+            <div class="row">
+                <div *ngFor="let artiste of artistes" class="col-lg-3 col-6" style="padding: 10px;">
+                    <app-display-artiste [artiste]="artiste"></app-display-artiste>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

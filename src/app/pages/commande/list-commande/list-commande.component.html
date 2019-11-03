@@ -1,0 +1,136 @@
+<div style="margin-top: -70px;">
+    <div class="arriereplan" style="border-bottom: 0px solid #333; overflow: hidden">
+        <div class="hideOnMobile"
+            style=" background: linear-gradient(to top, rgba(0,10,0,0.8), #0f9b0f); padding-top: 0vmin; padding-bottom: 0vmin;">
+            <div class="hideOnMobile" style="padding: 5vmin">
+                <h1 id="titre_page" class="display-4 africa" style="color: #fff; cursor: pointer!important;">
+                    <b>Mon panier</b>
+
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="artistes">
+    <div style="min-height: 100vh; margin-top: 0vmin">
+        <div class="">
+            <div>
+                <div class="row">
+                    <div class="col-8" style="border-right: 1px solid #eee; padding: 2vmin 5vmin; padding-left: 7vmin">
+                        <h1 class="africa">Liste des commandes</h1>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Miniature</th>
+                                        <th scope="col">Oeuvre</th>
+                                        <th scope="col">Artiste</th>
+                                        <th scope="col">Montant</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="" style="cursor:pointer" *ngFor="let oeuvre of panier; index as i">
+                                        <th scope="row">
+                                            {{oeuvre.date ? oeuvre.date.split('T')[0]:'Aucune date'}}
+                                        </th>
+                                        <td>
+                                            <div class="miniature" style="width: 80px; height: 80px; overflow: hidden">
+                                                <img (click)="ouvrir(i)"
+                                                    style="min-width: 80px; max-width: 150px; max-height: 150px; min-height: 80px;"
+                                                    [src]="oeuvre.src" alt="" />
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {{oeuvre.nom}}
+                                        </td>
+                                        <td>
+                                            <span class="nom_artiste" ng-click="controller.goToArtiste(oeuvre)">
+
+                                                {{oeuvre.artiste.nom}}
+                                                {{oeuvre.artiste.prenom}}
+                                            </span>
+                                        </td>
+                                        <td scope="row">
+                                            <b>
+                                                {{devise()}}
+                                                {{prix(oeuvre.prix)  | currency:'XAF':''}}
+                                            </b>
+                                        </td>
+                                        <td scope="row">
+                                            <h3 class="supprimer" (click)="supprimerOeuvre(oeuvre)"
+                                                style="text-align: center; color: #777">
+                                                <fa name="trash"></fa>
+                                            </h3>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-4" style="padding: 2vmin 5vmin ; background-color: #fafafa">
+                        <h1 class="africa">Total à payer</h1>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Libellé</th>
+                                        <th scope="col" style="text-align: right">Montant</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Montant HT</th>
+                                        <td style="text-align: right">
+                                            {{devise()}}
+                                            {{prix(total)  | currency:'XAF':''}}
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Taxe</th>
+                                        <td style="text-align: right">
+                                            {{devise()}}
+                                            {{prix(total * taxe)  | currency:'XAF':''}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th scope="col">Montant TTC</th>
+                                        <th scope="col" style="text-align: right">
+                                            {{devise()}}
+                                            {{prix(total * taxe + total) | currency:'XAF':''}}
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                            <p style="padding-top: 10px;">
+                                <a onclick="console.log('Je clique')" href="#!paiement"
+                                    class="btn btn-lg btn-outline-secondary" style="cursor: pointer!important;">
+                                    Passer au paiement
+                                </a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-body" style="padding-top: 0; padding-bottom: 0;">
+                <app-view-oeuvre [oeuvre]="oeuvre"></app-view-oeuvre>
+            </div>
+        </div>
+    </div>
+</div>

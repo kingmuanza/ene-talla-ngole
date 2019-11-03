@@ -1,0 +1,99 @@
+<div style="margin-top: -70px;">
+    <div
+        style="background: linear-gradient(to top, rgba(0,10,0,0.8), #0f9b0f); width: 100%; min-height: 15vh; padding: 40px; padding-top: 40px;">
+        <div class="row" style="padding-top: 0px;">
+            <div class="col-sm-12">
+                <h1 class="africa" style="color:#fafafa">
+                    <b style="font-size: 1.5em">Mon profil</b>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div style="width: 100%; margin-top: 0vh; padding: 2vmin 5vmin; padding-left: 7vmin; padding-bottom: 7vmin">
+
+
+        <div *ngIf="utilisateur" class="row" style="padding-top: 25px;">
+
+            <div class="col-lg-4" style="padding-right: 40px;">
+                <h1 class="africa">
+                    {{utilisateur.displayName}}
+                </h1>
+                <p class="lead" style="margin-top: -15px">
+                    {{utilisateur.ville}},
+                    {{utilisateur.pays}}
+                </p>
+                <p class="lead" style="margin-top: -15px">
+                    {{utilisateur.adresse}}
+                </p>
+                <h3 style="color: #aaa;">
+                    {{utilisateur.tel}}
+                </h3>
+                <h1 class="display4 display-4">
+                    <b>
+                        {{utilisateur.devise | uppercase }}
+                    </b>
+                </h1>
+            </div>
+            <div class="col-lg-6" style="padding-right: 40px;">
+                <form [formGroup]="profilForm" (ngSubmit)="onSubmitProfilForm()">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                Nom d'utilisateur
+                            </span>
+                        </div>
+                        <input formControlName="displayName" type="text" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                Numéro de téléphone
+                            </span>
+                        </div>
+                        <input formControlName="tel" type="text" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                Pays
+                            </span>
+                        </div>
+                        <input formControlName="pays" type="text" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                Ville
+                            </span>
+                        </div>
+                        <input formControlName="ville" type="text" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                Adresse de livraison
+                            </span>
+                        </div>
+                        <input formControlName="adresse" type="text" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Devise</label>
+                        </div>
+                        <select formControlName="devise" class="custom-select" id="inputGroupSelect01">
+                            <option value="fcfa">XAF</option>
+                            <option value="euro">Euro</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit" [disabled]="profilForm.invalid" class="btn btn-success">
+                            Enregistrer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<notifier-container></notifier-container>

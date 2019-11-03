@@ -1,0 +1,45 @@
+<div style="margin-top: -70px;">
+    <div
+        style="background: linear-gradient(to top, rgba(0,10,0,0.8), #0f9b0f); width: 100%; min-height: 15vh; padding-top: 40px;">
+        <div class="row" style="padding-top: 0vmin;">
+            <div class="col-sm-12" style="margin:0; padding: 5px;; margin-bottom: 20vmin;">
+                <div class="contenu">
+                    <h1 class="africa display-4" style="color:#fafafa">
+                        Rechercher
+                    </h1>
+                    <div class="input-group mb-3">
+                        <input [(ngModel)]="nom" (ngModelChange)="rechercher()" style="border: 3px solid yellowgreen" type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="oeuvres">
+    <div style="min-height: 100vh; margin-top: -20vmin; margin-bottom: 20vmin">
+        <div class="contenu">
+            <div class="row">
+                <ng-container *ngFor="let oeu of oeuvres; index as i">
+                    <div class="col-lg-4 col-6" style="padding: 10px;">
+                        <app-display-oeuvre [oeuvre]="oeu"></app-display-oeuvre>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="row">
+                <ng-container *ngFor="let a of artistes; index as i">
+                    <div class="col-lg-4 col-6" style="padding: 10px;">
+                        <app-display-artiste [artiste]="a"></app-display-artiste>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="row">
+                <ng-container *ngFor="let e of expositions; index as i">
+                    <div class="col-lg-4 col-6" style="padding: 10px;">
+                        <app-display-exposition [exposition]="e"></app-display-exposition>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

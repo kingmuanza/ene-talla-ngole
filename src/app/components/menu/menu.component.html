@@ -1,0 +1,59 @@
+<nav id="bar_nav" role="navigation" style=" opacity: 1; background-color: rgba(0,0,0,0.0); z-index: 2!important"
+    class="navbar navbar-expand-lg flex-column flex-md-row bd-navbar navbar-success animated fadeInDown delay-1s">
+
+    <!-- Logo de l'application -->
+    <a class="navbar-brand mr-auto" href="#" style="display: none">
+        <img class="brand_image" src="../assets/img/img.png" alt="" />
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerGauche">
+        <!-- Partie gauche du menu -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a id="accueil" class="nav-link text-white" routerLink="accueil" routerLinkActive="active">
+                    Accueil
+                </a>
+            </li>
+            <li class="nav-item">
+                <a id="oeuvres" class="nav-link text-white" routerLink="oeuvres" routerLinkActive="active">
+                    Oeuvres
+                </a>
+            </li>
+            <li class="nav-item">
+                <a id="artistes" class="nav-link text-white" routerLink="artistes" routerLinkActive="active">
+                    Artistes
+                </a>
+            </li>
+            <li class="nav-item">
+                <a id="expositions" class="nav-link text-white" routerLink="expositions" routerLinkActive="active">
+                    Expositions
+                </a>
+            </li>
+            <li class="nav-item" style="margin-right: 60px;">
+                <a id="eneditrip" class="nav-link text-white" routerLink="eneditrip" routerLinkActive="active">
+                    EnediTrip
+                </a>
+            </li>
+            <li *ngIf="utilisateur" class="nav-item dropdown" style="cursor: pointer;">
+                <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <span>
+                        {{utilisateur.displayName ? utilisateur.displayName:utilisateur.email}}
+                    </span>
+                </a>
+                <div style="float: left" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" routerLink="panier" routerLinkActive="active">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span style="padding-left: 10px;">Mon panier</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" ng-click="deconnexion()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span style="padding-left: 10px;">Déconnexion</span>
+
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

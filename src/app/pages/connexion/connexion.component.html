@@ -1,0 +1,46 @@
+<div style="margin-top: -70px;">
+    <div
+        style="background: linear-gradient(to top, rgba(0,10,0,0.8), #0f9b0f); width: 100%; min-height: 15vh; padding-top: 40px; padding-bottom: 40px;">
+        <div class="contenu" style="padding-top: 0px;">
+            <div class="row" style="padding-top: 0px;">
+                <div class="col-sm-12">
+                    <h1 class="africa" style="color:#fafafa">
+                        <b style="font-size: 1.5em">CONNEXION</b>
+                    </h1>
+                    <form
+                        [formGroup]="connexionForm" (ngSubmit)="onSubmitConnexionForm()">
+                    
+                    <div class="row">
+                        <div class="col-lg-4" style="padding-top: 10px">
+                            <input formControlName="login" type="email" name="login" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Login">
+
+                        </div>
+                        <div class="col-lg-4" style="padding-top: 10px">
+                            <input formControlName="passe" type="password" name="passe" class="form-control"
+                                id="exampleInputPassword1" placeholder="Mot de passe">
+                        </div>
+                        <div class="col-lg-4" style="padding-top: 10px;">
+                            <button id="connexion" class="btn btn-success" style="margin-right: 20px;" type="submit">
+                                Connexion
+                            </button>
+                            <a routerLink="/inscription" class="btn btn-light">S'enregistrer</a>
+                        </div>
+                    </div>
+                    <div style="margin-top: 20px; color:#fafafa">
+                        
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="min-height: 100vh;">
+    <div class="contenu">
+        <h1 class="africa" style="margin-top: 40px;">
+            Pourquoi dois-je me connecter ?
+        </h1>
+    </div>
+</div>
+<notifier-container></notifier-container>

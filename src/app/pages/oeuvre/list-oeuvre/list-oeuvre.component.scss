@@ -1,0 +1,17 @@
+.arriereplan {
+    background: url('https://firebasestorage.googleapis.com/v0/b/coworking-muanza.appspot.com/o/wallbw2.jpg?alt=media&token=d7d359e6-3917-4cee-8ec2-261d08a3409f'); 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+}
+
+.contour-jaune {
+    border: 2px solid yellow
+}
+
+@media only screen and (max-width: 500px) {
+    
+    .arriereplan {
+        background: #fff !important;
+    }
+    
+}

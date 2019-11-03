@@ -1,0 +1,41 @@
+<div *ngIf="exposition" class="ombre hauteur_exposition"
+    style="cursor: pointer; border: 1px solid #eee; overflow: hidden">
+    <div class="hauteur_exposition"
+        style="background-color: #eee; background-size: cover; background-position: center center"
+        [ngStyle]="{'background-image':'url('+exposition.photo+')'}">
+    </div>
+</div>
+<div *ngIf="exposition" style="margin-top: 15px;">
+    <div>
+        <div>
+            <div style="display: none; float: right; padding-top: 5px;">
+                <a class="btn btn-lg btn-outline-secondary" style="cursor: pointer!important;">
+                    <fa name="shopping-cart"></fa>
+                    {{exposition.nom}}
+                </a>
+            </div>
+            <h5 class='titre1 africa'>
+                <span style="color: #0f9b0f">
+                    {{exposition.lieu}}
+                </span>
+                <span class="float_droite">
+                    {{exposition.pays}}
+                </span>
+            </h5>
+            <h3 style="margin-top: -10px;">
+                <app-display-notation [notation]="exposition.notation"></app-display-notation>
+            </h3>
+
+            <div style="margin-top: -10px;">
+                Du {{toDate(exposition.dateDebut) | date:'dd-MM-yyyy'}} au
+                {{toDate(exposition.dateFin) | date:'dd-MM-yyyy'}}
+            </div>
+        </div>
+        <div>
+            <p style="padding-top: 10px"></p>
+        </div>
+    </div>
+
+
+
+</div>

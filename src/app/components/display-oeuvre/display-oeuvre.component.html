@@ -1,0 +1,48 @@
+<div *ngIf="oeuvre" class="ombre hauteur_oeuvre"
+    style="cursor: pointer; border: 1px solid #eee; overflow: hidden">
+    <div class="hauteur_oeuvre" style="background-color: #eee; background-size: cover; background-position: center center"
+        [ngStyle]="{'background-image':'url('+oeuvre.src+')'}">
+    </div>
+</div>
+<div *ngIf="oeuvre" style="margin-top: 15px;">
+    <div>
+        <div>
+            <div style="display: none; float: right; padding-top: 5px;">
+                <a class="btn btn-lg btn-outline-secondary" style="cursor: pointer!important;">
+                    <fa name="shopping-cart"></fa>
+                    {{devise()}}
+                    {{prix(oeuvre.prix)  | currency:'XAF':''}}
+                </a>
+            </div>
+            <h5 class='titre1 africa'>
+                <span style="color: #0f9b0f">
+                    {{oeuvre.nom}}
+                </span>
+                <span class="float_droite">
+                    {{devise()}}
+                    {{prix(oeuvre.prix)  | currency:'XAF':''}}
+                </span>
+            </h5>
+            <h3 style="margin-top: -10px;">
+                <app-display-notation [notation]="oeuvre.notation"></app-display-notation>
+            </h3>
+
+            <div style="margin-top: -10px;">
+                <div>
+                    <a class='lien_gris lien_artiste'>
+                        {{oeuvre.artiste.nom}}
+                        {{oeuvre.artiste.prenom}}
+                    </a>
+                    , {{oeuvre.artiste.pays}}.
+                </div>
+                {{oeuvre.description ? oeuvre.description:"Aucune description"}}
+            </div>
+        </div>
+        <div>
+            <p style="padding-top: 10px"></p>
+        </div>
+    </div>
+
+
+
+</div>

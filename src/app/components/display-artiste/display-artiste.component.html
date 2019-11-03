@@ -1,0 +1,7 @@
+<div (click)="ouvrirArtiste(artiste)" class="box_muanza ombre h50" style="background-size: cover; border: 1px solid #eee;"
+    [ngStyle]="{'background-image':'url('+artiste.photo+')'}">
+
+</div>
+<p style="text-align: center; font-size: 1.0em; padding-top: 5px;">
+    <b>{{artiste.nom}}</b>, {{artiste.pays}}
+</p>

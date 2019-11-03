@@ -1,0 +1,295 @@
+<div id="hautdepage" style="margin-top: -70px;">
+    <div class=""
+        style="border-bottom: 0px solid #333; height: 70vmin; color:#fff; background-color: #000; overflow: hidden">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" style="cursor: pointer">
+                <div class="carousel-item active">
+                    <div
+                        style="filter: blur(0px); width: 100%; height: 70vmin; background-attachment: fixed;background-size: cover ;  background-image: url('https://firebasestorage.googleapis.com/v0/b/coworking-muanza.appspot.com/o/1.jfif?alt=media&token=88af0b2b-64a2-4066-b9bd-0cb652b990a7')">
+
+                    </div>
+                    <div class="gradient animated rotateIn delay-1s"
+                        style="padding: 2vw ; padding-left: 3vw ; position: absolute; margin-top: -70vmin;width: 100%; height: 70vmin; background: linear-gradient(to top, rgba(0,10,0,0.8), #0f9b0f);">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 class="animated fadeInLeft delay-1s"
+                                    style="line-height: 0.85; width: 80vw; padding-left: 15vw; padding-right: 5vw; padding-top: 15vmin; color:#fff;">
+                                    <span class="manuscrit">
+                                        L'Afrique en vue
+                                        <br>
+                                        <sup>d'</sup><span style="font-size: 1.3em">Artistes
+                                        </span>
+                                    </span>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div
+                        style="filter: blur(0px); width: 100%; height: 70vmin; background-attachment: fixed;background-size: cover ;  background-image: url('https://firebasestorage.googleapis.com/v0/b/coworking-muanza.appspot.com/o/2.jfif?alt=media&token=88af0b2b-64a2-4066-b9bd-0cb652b990a7')">
+
+                    </div>
+                    <div
+                        style="padding: 2vw ; padding-left: 3vw ; position: absolute; margin-top: -70vmin;width: 100%; height: 70vmin;  background: linear-gradient(to top, rgba(0,0,0,0.8), #0f9b0f);">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 class="animated fadeInLeft delay-1s"
+                                    style="line-height: 0.85; width: 80vw; padding-left: 15vw; padding-right: 5vw; padding-top: 15vmin; color:#fff;">
+                                    <span class="manuscrit">
+                                        L'Afrique en vue
+                                        <br>
+                                        <sup>d'</sup><span style="font-size: 1.3em">Artistes
+                                        </span>
+                                    </span>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div
+                        style="filter: blur(0px); width: 100%; height: 70vmin; background-attachment: fixed;background-size: cover ;  background-image: url('https://firebasestorage.googleapis.com/v0/b/coworking-muanza.appspot.com/o/3.jfif?alt=media&token=88af0b2b-64a2-4066-b9bd-0cb652b990a7')">
+
+                    </div>
+                    <div class="gradient"
+                        style="padding: 2vw ; padding-left: 3vw ; position: absolute; margin-top: -70vmin;width: 100%; height: 70vmin;  background: linear-gradient(to top, rgba(0,0,0,0.8), #0f9b0f);">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 class="animated fadeInLeft delay-1s"
+                                    style="line-height: 0.85; width: 80vw; padding-left: 15vw; padding-right: 5vw; padding-top: 15vmin; color:#fff;">
+                                    <span class="manuscrit">
+                                        L'Afrique en vue
+                                        <br>
+                                        <sup>d'</sup><span style="font-size: 1.3em">Artistes
+                                        </span>
+                                    </span>
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+<div style="min-height: 100vh;  width: 100% ; background-color: #fff; margin-top: 0vmin">
+    <div style="background-color: #fff; min-height: 80vh; width: 100%; " class="">
+        <div style="padding-bottom: 40px; ">
+            <div class="contenu" style="padding-top: 20px;">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1 class="display-4 africa" style="padding-right: 0px; text-align: center">
+                            Recommandations
+                        </h1>
+                        <div class="arranger titre2 lead" style="text-align: center">
+                            Cliquez sur l'oeuvre pour obtenir plus de détails
+                        </div>
+                    </div>
+                </div>
+                <div style=" padding: 10px; padding-top: 20px;">
+                    <div class="row">
+                        <ng-container *ngFor="let oeu of oeuvres; index as i">
+                            <div (click)="ouvrir(i)" class="col-lg-4 col-6" style="padding: 10px;">
+                                <app-display-oeuvre [oeuvre]="oeu"></app-display-oeuvre>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div style="padding-bottom: 30px; text-align: center">
+                    <span routerLink="oeuvres" class="carreau titre3 " style="cursor: pointer">
+                        Voir plus d'oeuvres artistiques
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        style="filter: blur(0px); width: 100%; height: 110vh; background-attachment: fixed;background-size: cover ;  background-image: url('https://firebasestorage.googleapis.com/v0/b/coworking-muanza.appspot.com/o/21.jfif?alt=media&token=88af0b2b-64a2-4066-b9bd-0cb652b990a7')">
+
+    </div>
+
+
+    <div class="contenu" style="padding-top: 40px;">
+        <div style="padding-top: 0px;">
+            <h1 class="display-4 africa" style="text-align: center">Artistes les plus en vue</h1>
+            <p class="lead titre2" style="text-align: center">
+                Découvrez les artistes qui attirent le plus la clientèle
+            </p>
+
+        </div>
+        <div style=" padding: 10px;">
+            <div id="les_artistes" class="row" style="padding-top: 0px;">
+                <div *ngFor="let art of artistes" class="col-lg-3 col-6" style="padding: 10px;">
+                    <app-display-artiste [artiste]="art">
+
+                    </app-display-artiste>
+                </div>
+            </div>
+        </div>
+        <div style="padding-top: 0px; text-align: center">
+            <span class="carreau  titre3" style="cursor: pointer;">
+                Découvrir plus d'artistes créateurs
+            </span>
+        </div>
+    </div>
+    <div style="height: 80px">
+        <div class="row">
+            <div class="col-sm-4">
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div *ngIf="expositions">
+        <div *ngIf="expositions[0]" id="div_biblio" [ngStyle]="{'background-image':'url('+expositions[0].photo+')'}"
+            style="border-bottom: 0px solid #222 ;min-height: 0vh; background-attachment: fixed; background-size: cover">
+            <div style="min-height: 0vh; background-color: rgba(255, 255, 255, 0.95);">
+
+                <div class="row" style="color: #000">
+                    <div class="col-lg-6" style="margin:0; padding: 0; display: none">
+                        <div
+                            style="border-radius: 0px ; border: 0px solid #eee ; min-height: 0vh; max-height: 60vh; overflow : hidden">
+                            <img (click)="ouvrir(expositions[0])" style="width: 100%; cursor: pointer"
+                                [src]="expositions[0].photo" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="contenu contenu_mobile" style="margin-top: 60px; margin-bottom: 40px;">
+                            <div class="row">
+                                <div class="col-lg-4" style="margin-bottom: 20px;">
+                                    <img (click)="ouvrir(expositions[0])" style="max-width: 80vmin; width: 100%"
+                                        [src]="expositions[0].photo" alt="" />
+                                </div>
+                                <div class="col-lg-8" style="margin-bottom: 20px;">
+                                    <h4 class="africa paddingTopMobile">
+                                        {{expositions[0].nom}}
+
+                                    </h4>
+                                    <p class="lead" style="margin-top: -10px;">
+                                        {{expositions[0].lieu}},
+                                        {{expositions[0].pays}}
+                                    </p>
+                                    <p class="lead capitalize africa" style="margin-top: -10px;">
+                                        Du {{toDate(expositions[0].dateDebut) | date:'dd-MM-yyyy'}} au
+                                        {{toDate(expositions[0].dateFin) | date:'dd-MM-yyyy'}}
+                                    </p>
+                                    <div>
+                                        <span class="titre3 carreau " style="cursor: pointer">
+                                            Découvrir plus d'expositions
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="filter: blur(0px); width: 100%;">
+        <div class="contenu" style="text-align: center; margin-top: 10vmin; margin-bottom: 10vmin">
+            <h2>
+                Comment ca marche ?
+            </h2>
+            <div class="row" style="margin-top: 5vmin">
+                <div class="col-lg-4"  style="margin-bottom: 20px;">
+                    <h1>
+                        <fa style="font-size: 1.5em; font-weight: 100;" name="search"></fa>
+                    </h1>
+                    <h3 style="font-weight: 200">
+                        Sélection
+                    </h3>
+                    <small class="lead" style="color:#777">
+                        Nous sélectionnions les meilleures oeuvres d'art africain.
+                    </small>
+                </div>
+                <div class="col-lg-4" style="margin-bottom: 20px;">
+                    <h1>
+                        <fa style="font-size: 1.5em; font-weight: 100" name="desktop"></fa>
+                    </h1>
+                    <h3 style="font-weight: 200">
+                        Mise en ligne
+                    </h3>
+                    <small class="lead" style="color:#777">
+                        Nous les mettons en ligne sur cette plateforme
+                    </small>
+                </div>
+                <div class="col-lg-4" style="margin-bottom: 20px;">
+                    <h1>
+                        <fa style="font-size: 1.5em; font-weight: 100" name="shopping-cart"></fa>
+                    </h1>
+                    <h3 style="font-weight: 200">
+                        Commande
+                    </h3>
+                    <small class="lead" style="color:#777">
+                        Vous passez commande et êtres livré chez vous, grâce à un service fiable et sécurisé.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div
+        style="background-color: #fff; width: 100%; background-attachment: fixed;background-size: 100% auto ;  ackground-image: url('https://firebasestorage.googleapis.com/v0/b/coworking-muanza.appspot.com/o/27.jfif?alt=media&token=88af0b2b-64a2-4066-b9bd-0cb652b990a7')">
+        <div>
+            <div
+                style="border-radius: 0px; padding-bottom:7vmin; background-color: rgba(68, 185, 25, 0.9); border: 0px solid white">
+                <div style="text-align: center; padding: 5vmin">
+                    <h1 class="africa text-white titre_newsLetter" style="">
+                        S'inscrire à notre newsletter
+                    </h1>
+                    <p class="text_newsLetter" style="color:#fefefe; padding-left: 10vmin; padding-right: 10vmin">
+                        Nous vous enverrons régulièrement les nouveautés, les principales actualités sur les artistes et
+                        la scène artistique africaine.
+                    </p>
+                    <div class="padding_input_newsLetter">
+                        <div class="input-group input-group-lg">
+                            <input style="text-align: center;" type="email" class="form-control africa"
+                                placeholder="Email">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-light" style="">S'inscrire</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            
+            <div class="modal-body" style="padding-top: 0; padding-bottom: 0;">
+                <app-view-oeuvre [oeuvre]="oeuvre"></app-view-oeuvre>
+            </div>
+        </div>
+    </div>
+</div>

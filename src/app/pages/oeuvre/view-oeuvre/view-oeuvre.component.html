@@ -1,0 +1,48 @@
+<div class="row" *ngIf="oeuvre">
+    <div class="col-lg-8" style="margin:0; padding:0">
+        <img [src]="oeuvre.src" style="width: 100%">
+    </div>
+    <div class="col-lg-4" style="margin:0; padding:0">
+        <div style="padding: 20px; padding-left: 30px;">
+            <h2 class="africa">
+                {{oeuvre.nom}}
+
+            </h2>
+            <p (click)="voirArtiste(oeuvre.artiste)" class="lead"
+                style="font-size: 1.2em; margin-top: -10px; cursor: pointer">
+                {{oeuvre.artiste.nom}}
+                {{oeuvre.artiste.prenom}},
+                {{oeuvre.artiste.pays}}
+            </p>
+            <h2 style="margin-top: -10px;">
+                <app-display-notation [notation]="oeuvre.notation"></app-display-notation>
+            </h2>
+
+            <p class="lead" style="color: #ccc">
+                Notation : {{oeuvre.description ? oeuvre.description:"Aucune description"}}
+            </p>
+            <h1 class="africa" style="padding-top: 0px;">
+                {{devise()}}
+                {{prix(oeuvre.prix)  | currency:'XAF':''}}
+            </h1>
+            <p style="padding-top: 10px" *ngIf="!estPresent">
+                <a (click)="ajouterAuPanier()" class="btn btn-lg btn-outline-secondary"
+                    style="cursor: pointer!important;">
+                    <fa name="shopping-cart"></fa>
+                    <span style="padding-left: 10px;">Ajouter au Panier</span>
+
+                </a>
+            </p>
+            <p style="padding-top: 10px" *ngIf="estPresent">
+                <a (click)="supprimerOeuvre()" class="btn btn-lg btn-outline-secondary"
+                    style="cursor: pointer!important;">
+                    <fa name="shopping-cart"></fa>
+                    <span style="padding-left: 10px;">Retirer du Panier</span>
+
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<notifier-container></notifier-container>

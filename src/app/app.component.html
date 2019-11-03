@@ -1,0 +1,241 @@
+<div style="border-bottom: 1px solid #aaa; position: fixed; top:0; left:0; z-index: 1000; width: 100vw; height: 48px; overflow: hidden;"
+    class=" hideOnMobile">
+    <div style="min-height: 40px; background-color: white;" class="hideOnMobile">
+        <div class="row">
+            <div class="col-lg-1" style="margin:0; padding:0">
+                <div
+                    style="color: #aaa; border-right: 1px solid #eee; padding-top: 10px; padding-bottom: 20px; text-align: center">
+                    <span style="margin-left: 10px;">
+                        Francais
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-1" style="margin:0; padding:0; text-align: center">
+                <div (click)="toggleMoneyMenu()" style="border-right: 1px solid #eee; padding-top: 0px; padding-bottom: 10px; cursor: pointer;">
+                    <a class="nav-link dropdown-toggle">
+                        <span *ngIf="getDevise() == 'euro'">
+                            &euro;
+                        </span>
+                        <span *ngIf="getDevise() == 'fcfa'">
+                            XAF
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5" style="margin:0; padding:0">
+                <div style="border-right: 1px solid #eee; padding-top: 10px; padding-bottom: 20px">
+                    <a routerLinkActive="active" style="text-decoration: none; margin-left: 20px;"
+                        routerLink="contacteznous">
+                        Besoin d'aide ? Contactez-nous !
+                    </a>
+                </div>
+            </div>
+            <div *ngIf="!utilisateur" class="col-lg-3" style="margin:0; padding:0; text-align: center">
+                <div style="border-right: 1px solid #eee;  padding-top: 10px; padding-bottom: 20px">
+                    <a routerLinkActive="active" style="text-decoration: none; margin-left: 20px;"
+                        routerLink="connexion">
+                        <fa name="user" style="margin-right: 10px;"></fa>
+                        S'inscrire / Se connecter
+                    </a>
+                </div>
+            </div>
+            <div *ngIf="utilisateur" class="col-lg-3"
+                style="background-color: #fff; margin:0; padding:0; text-align: center">
+                <div style="border-right: 1px solid #eee;  padding-top: 10px; padding-bottom: 20px">
+                    <a class="dropdown-toggle" (click)="toggleUserMenu()"
+                        style="text-decoration: none; margin-left: 20px; cursor: pointer;">
+                        <fa name="user" style="margin-right: 10px; color:green"></fa>
+                        {{utilisateur.displayName}}
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-1" style="margin:0; padding:0">
+                <div style="text-align: center; border-right: 1px solid #eee;padding-top: 5px; padding-bottom: 20px">
+                    <a style="text-decoration: none; font-size: 1.3em" routerLink="panier">
+                        <fa name="shopping-cart"></fa>
+                        <b *ngIf="utilisateur">
+                            <sup *ngIf="utilisateur.panier" style="color: red; margin-left: 10px;">
+                                {{utilisateur.panier.length}}
+                            </sup>
+                        </b>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-1" style="margin:0; padding:0">
+                <div style="text-align: center; padding-top: 5px; padding-bottom: 20px">
+                    <a style="text-decoration: none; font-size: 1.3em; margin-right: 10px;" routerLink="rechercher">
+                        <fa name="search"></fa>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div #insideElement *ngIf="userMenuVisible"
+    style="background-color: #fff; position:fixed; top:47px; left:58.33vw; width: 26vw; z-index: 1000; min-height: 60px;;">
+    <div>
+        <div class="menu-muanza" (click)="goToMyProfile()">
+            Mon profil
+        </div>
+        <div class="menu-muanza" (click)="changerPasse()">
+            Changer de mot de passe
+        </div>
+        <div class="menu-muanza" (click)="deconnexion()">
+            Déconnexion
+        </div>
+    </div>
+</div>
+<div #moneyInsideElement *ngIf="moneyMenuVisible"
+    style="background-color: #fff; position:fixed; top:47px; left:7.2vw; width: 9.2vw; z-index: 1000; min-height: 60px;;">
+    <div>
+        <div class="menu-muanza" (click)="setDevise('euro')">
+            Euro
+        </div>
+        <div class="menu-muanza" (click)="setDevise('fcfa')">
+            XAF
+        </div>
+    </div>
+</div>
+
+<div style="border-bottom: 2px solid #eee; overflow-x:scroll; min-height: 40px; background-color: white; position: fixed; top:0; left:0; z-index: 1000; width: 100vw;"
+    class="showOnMobile">
+    <div style="width: 400vw;">
+        <div class="row">
+            <div class="col-6" style="">
+                <div class="row">
+                    <div class="col-2" style="margin:0; padding:0; text-align: center">
+                        <div style="border-right: 1px solid #eee; padding-top: 5px; padding-bottom: 10px">
+                            <a class="africa" style="margin-left: 10px; text-decoration: none; font-size: 1.3em"
+                                routerLink="accueil" routerLinkActive="active">
+                                Accueil
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-2" style="margin:0; padding:0; text-align: center">
+                        <div style="border-right: 1px solid #eee; padding-top: 5px; padding-bottom: 10px">
+                            <a class="africa" style="text-decoration: none; font-size: 1.3em" routerLinkActive="active"
+                                routerLink="oeuvres">
+                                Oeuvres
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-1" style="margin:0; padding:0">
+                        <div
+                            style="border-right: 1px solid #eee; text-align: center; padding-top: 5px; padding-bottom: 10px">
+                            <a routerLinkActive="active" style="text-decoration: none; font-size: 1.3em"
+                                routerLink="rechercher">
+                                <fa name="search"></fa>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-1" style="margin:0; padding:0; text-align: center">
+                        <div style="border-right: 1px solid #eee; padding-top: 5px; padding-bottom: 10px">
+                            <a routerLinkActive="active" style="text-decoration: none; font-size: 1.3em"
+                                routerLink="contacteznous">
+                                <fa name="envelope"></fa>
+                            </a>
+                        </div>
+                    </div>
+                    <div *ngIf="!utilisateur" class="col-1" style="margin:0; padding:0; text-align: center">
+                        <div style="border-right: 1px solid #eee;  padding-top: 5px; padding-bottom: 10px">
+                            <a routerLinkActive="active" style="text-decoration: none; font-size: 1.3em"
+                                routerLink="connexion">
+                                <fa name="user"></fa>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div *ngIf="utilisateur" class="col-1" style="margin:0; padding:0; text-align: center">
+                        <div style="border-right: 1px solid #eee;  padding-top: 5px; padding-bottom: 10px">
+                            <a routerLinkActive="active" style="text-decoration: none; font-size: 1.3em"
+                                routerLink="connexion">
+                                <fa name="user" style="color: green"></fa>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="col-1" style="margin:0; padding:0">
+                        <div
+                            style="text-align: center; border-right: 1px solid #eee;padding-top: 5px; padding-bottom: 10px">
+                            <a routerLinkActive="active" style="text-decoration: none; font-size: 1.3em"
+                                routerLink="panier">
+                                <fa name="shopping-cart"></fa>
+                                <sup color="red">
+                                    3
+                                </sup>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-1" style="margin:0; padding:0">
+                        <div
+                            style="border-right: 1px solid #eee; text-align: center; padding-top: 5px; padding-bottom: 10px">
+                            <a routerLinkActive="active" style="text-decoration: none; font-size: 1.3em"
+                                routerLink="rechercher">
+                                <fa name="search"></fa>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-2" style="margin:0; padding:0; text-align: center">
+                        <div style="border-right: 1px solid #eee; padding-top: 5px; padding-bottom: 10px">
+                            <a routerLinkActive="active" class="africa" style="text-decoration: none; font-size: 1.3em"
+                                routerLinkActive="active" routerLink="artistes">
+                                Artistes
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-6" style="margin:0; padding:0;">
+                <div class="row">
+                    <div class="col-2" style="margin:0; padding:0; text-align: center">
+                        <div style="border-right: 1px solid #eee; padding-top: 5px; padding-bottom: 10px">
+                            <a routerLinkActive="active" class="africa" style="text-decoration: none; font-size: 1.3em"
+                                routerLinkActive="active" routerLink="expositions">
+                                Expositions
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-2" style="margin:0; padding:0; text-align: center">
+                        <div
+                            style="margin-left: 10px; border-right: 1px solid #eee; padding-top: 0px; padding-bottom: 5px; ">
+                            <a routerLinkActive="active" class="nav-link dropdown-toggle" id="navbarDropdown2"
+                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span *ngIf="getDevise() == 'euro'">
+                                    &euro;
+                                </span>
+                                <span *ngIf="getDevise() == 'fcfa'">
+                                    XAF
+                                </span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                                <a class="dropdown-item" (click)="setDevise('euro')">
+                                    <i style="width: 50px" class="fas fa-euro-sign"></i>
+                                    <span style="float: right">Euro</span>
+                                </a>
+                                <a class="dropdown-item" (click)="setDevise('fcfa')">
+                                    <b style="width: 50px">XAF</b>
+                                    <span style="float: right">Franc CFA</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div style="min-height: 80px; background-color: white" class="showOnMobile">
+</div>
+<div style="min-height: 52px; background-color: white" class="hideOnMobile">
+</div>
+
+<app-menu></app-menu>
+
+<router-outlet></router-outlet>
+
+<app-footer>
+
+</app-footer>

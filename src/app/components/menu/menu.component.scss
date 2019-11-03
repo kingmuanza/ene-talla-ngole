@@ -1,0 +1,46 @@
+.brand_image {
+    height: 60px;
+}
+
+.navbar-brand {
+    margin-top: -18px;
+    margin-bottom: -18px;
+}
+
+.navbar-toggler {
+    display: inline-block;
+
+}
+
+.paddingFooter {
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+
+.nav-link.active {
+    border-bottom: 2px solid yellow;
+}
+
+.showOnMobile {
+    display: none;
+}
+
+@media only screen and (max-width: 500px) {
+    .brand_image {
+        height: 40px;
+    }
+
+    .navbar-brand {
+        margin-top: -10px;
+        margin-bottom: -10px;
+    }
+
+    .paddingFooter {
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+
+    .showOnMobile {
+        display: block;
+    }
+}

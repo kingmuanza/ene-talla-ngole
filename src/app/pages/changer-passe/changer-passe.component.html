@@ -1,0 +1,55 @@
+<div style="margin-top: -70px;">
+    <div
+        style="background: linear-gradient(to top, rgba(0,10,0,0.8), #0f9b0f); width: 100%; min-height: 15vh; padding: 40px; padding-top: 40px;">
+        <div class="row" style="padding-top: 0px;">
+            <div class="col-sm-12">
+                <h1 class="africa" style="color:#fafafa">
+                    <b style="font-size: 1.5em">Changer mon mot de passe</b>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div style="width: 100%; margin-top: 0vh; padding: 2vmin 5vmin; padding-left: 7vmin; padding-bottom: 7vmin">
+
+
+        <div class="row" style="padding-top: 25px;">
+
+            
+            <div class="col-lg-6" style="padding-right: 40px;">
+                <form [formGroup]="passeForm" (ngSubmit)="onSubmitPasseForm()">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                Ancien mot de passe
+                            </span>
+                        </div>
+                        <input formControlName="ancien" type="password" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                Nouveau mot de passe
+                            </span>
+                        </div>
+                        <input formControlName="nouveau" type="password" class="form-control">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                Confirmer nouveau mot de passe
+                            </span>
+                        </div>
+                        <input formControlName="confirmation" type="passe" class="form-control">
+                    </div>
+                    <div>
+                        <button type="submit" [disabled]="passeForm.invalid" class="btn btn-success">
+                            Enregistrer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<notifier-container></notifier-container>
