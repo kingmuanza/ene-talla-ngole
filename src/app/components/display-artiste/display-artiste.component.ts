@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Artiste } from 'src/app/models/artiste.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-display-artiste',
@@ -10,14 +11,14 @@ export class DisplayArtisteComponent implements OnInit {
 
   @Input() artiste: Artiste;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   ouvrirArtiste(artiste) {
     console.log('ouvrirArtiste()');
-    window.location.href = 'artistes/view/' + artiste.id;
+    this.router.navigate(['artistes', 'view', artiste.id]);
   }
 
 }

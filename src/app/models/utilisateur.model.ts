@@ -11,6 +11,7 @@ export class Utilisateur {
     adresse: string;
     devise: string;
     panier: Array<OeuvrePanier>;
+    isAdmin: boolean;
 
     constructor() {
 

@@ -2,6 +2,17 @@
     height: 40vmin;
 }
 
+
+.muanza-image {
+    background-size: cover;
+    cursor:pointer;
+    transition: transform 400ms ease-in;
+    &:hover {
+        transform: scale(1.25);
+    }
+
+}
+
 @media only screen and (max-width: 500px) {
     
     .titre1 {

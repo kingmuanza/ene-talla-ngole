@@ -1,0 +1,18 @@
+form {
+    input {
+        transition: background-color 1500ms, opacity 1000ms;
+
+        &:not(:focus):invalid {
+            background-color: orangered;
+            color: white;
+        }
+
+        &:not(:focus):invalid+small {
+            opacity: 1;
+        }
+    }
+
+    small {
+        opacity: 0;
+    }
+}

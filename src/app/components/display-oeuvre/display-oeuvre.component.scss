@@ -4,6 +4,13 @@
 .float_droite {
     float: right;
 }
+
+.muanza-image {
+    transition: transform 400ms ease-in-out;
+    &:hover {
+        transform: scale(1.25);
+    }
+}
 @media only screen and (max-width: 500px) {
     
     .hauteur_oeuvre {

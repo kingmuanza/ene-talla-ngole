@@ -3,6 +3,9 @@ import * as firebase from 'firebase';
 import { AuthenticationService } from 'src/app/ia/authentication.service';
 import { Subscription } from 'rxjs';
 import { NotifierService } from 'angular-notifier';
+import { Router } from '@angular/router';
+import { Oeuvre } from 'src/app/models/oeuvre.model';
+import { Utilisateur } from 'src/app/models/utilisateur.model';
 
 @Component({
   selector: 'app-view-oeuvre',
@@ -14,16 +17,31 @@ export class ViewOeuvreComponent implements OnInit, OnChanges {
   @Input() oeuvre;
   panier = [];
   estPresent = false;
+  panierSubscription: Subscription;
   utilisateurSubscription: Subscription;
   private readonly notifier: NotifierService;
+  utilisateur: Utilisateur;
 
-  constructor(private notifierService: NotifierService, private authentication: AuthenticationService) {
+  constructor(private router: Router, private notifierService: NotifierService, private authentication: AuthenticationService) {
     this.notifier = notifierService;
   }
 
+  edit(oeuvre: Oeuvre) {
+    const modal = $('#exampleModal') as any;
+    modal.modal('hide');
+    const modal2 = $('#viewoeuvre') as any;
+    modal2.modal('hide');
+    this.router.navigate(['oeuvres', 'edit', oeuvre.id]);
+  }
+
   ngOnInit() {
+    this.panierSubscription = this.authentication.panierSubject.subscribe((panier: Array<any>) => {
+      console.log('Prise en compte du changement du panier');
+      this.panier = panier;
+    });
     this.utilisateurSubscription = this.authentication.utilisateurSubject.subscribe((utilisateur: any) => {
       if (utilisateur) {
+        this.utilisateur = utilisateur;
         this.panier = utilisateur.panier;
         this.estPresentDansPanier(this.panier, this.oeuvre);
       }
@@ -39,6 +57,9 @@ export class ViewOeuvreComponent implements OnInit, OnChanges {
   }
 
   estPresentDansPanier(panier, oeuvre) {
+    if (!panier) {
+
+    }
     if (panier && oeuvre) {
       for (let j = 0; j < panier.length; j++) {
         const element = panier[j];
@@ -54,8 +75,12 @@ export class ViewOeuvreComponent implements OnInit, OnChanges {
 
   ajouterAuPanier() {
     this.authentication.getPanier();
-    if (this.authentication.utilisateur.panier) {
-      this.panier = this.authentication.utilisateur.panier;
+    if (this.authentication.utilisateur) {
+      if (this.authentication.utilisateur.panier) {
+        this.panier = this.authentication.utilisateur.panier;
+      } else {
+        this.panier = [];
+      }
     } else {
       this.panier = [];
     }
@@ -66,15 +91,25 @@ export class ViewOeuvreComponent implements OnInit, OnChanges {
       this.panier.push(this.oeuvre);
     }
     const utilisateur = this.authentication.utilisateur;
-    utilisateur['panier'] = this.panier;
-    firebase.database().ref('enediart/utilisateurs/' + utilisateur.uid + '/panier').set(this.panier).then(() => {
-      console.log('Element supprimer de liste');
-      this.authentication.getPanier();
+    if (utilisateur) {
+      utilisateur['panier'] = this.panier;
+      firebase.database().ref('enediart/utilisateurs/' + utilisateur.uid + '/panier').set(this.panier).then(() => {
+        console.log('Element supprimer de liste');
+        this.authentication.getPanier();
+        this.notifier.show({
+          message: 'L\'oeuvre \'' + this.oeuvre.nom + '\' a été ajoutée au panier',
+          type: 'success'
+        });
+      });
+    } else {
+      this.authentication.panier = this.panier;
+      this.authentication.update();
+      this.estPresentDansPanier(this.panier, this.oeuvre);
       this.notifier.show({
         message: 'L\'oeuvre \'' + this.oeuvre.nom + '\' a été ajoutée au panier',
         type: 'success'
       });
-    });
+    }
   }
 
   supprimerOeuvre() {
@@ -96,20 +131,32 @@ export class ViewOeuvreComponent implements OnInit, OnChanges {
           panier.push(oeuvr);
         }
       }
-      this.authentication.utilisateur.panier = panier;
-      this.authentication.update();
-      console.log('user.uid');
-      console.log(user);
-      console.log(user.uid);
-      firebase.database().ref('enediart/utilisateurs/' + user.uid + '/panier').set(panier).then(() => {
-        console.log('Element supprimer de liste');
-        this.authentication.getPanier();
-        this.estPresent = false;
+      if (this.authentication.utilisateur) {
+
+        this.authentication.utilisateur.panier = panier;
+        this.authentication.update();
+        console.log('user.uid');
+        console.log(user);
+        console.log(user.uid);
+        firebase.database().ref('enediart/utilisateurs/' + user.uid + '/panier').set(panier).then(() => {
+          console.log('Element supprimer de liste');
+          this.authentication.getPanier();
+          this.estPresent = false;
+          this.notifier.show({
+            message: 'L\'oeuvre \'' + this.oeuvre.nom + '\' a été retirée du panier',
+            type: 'success'
+          });
+        });
+      } else {
+        this.panier = panier;
+        this.authentication.panier = this.panier;
+        this.authentication.update();
+        this.estPresentDansPanier(this.panier, this.oeuvre);
         this.notifier.show({
           message: 'L\'oeuvre \'' + this.oeuvre.nom + '\' a été retirée du panier',
           type: 'success'
         });
-      });
+      }
     }
 
   }

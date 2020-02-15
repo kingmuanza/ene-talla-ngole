@@ -58,6 +58,26 @@
     }
 }
 
+.paiement-visa {
+    background-image: url(../../../assets/img/Symbole-Visa.png);
+    background-size: 100% auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.paiement-mm {
+    background-image: url(../../../assets/img/mobile-money.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.paiement-om {
+    background-image: url(../../../assets/img/logo-orange-money.png);
+    background-size: 90% auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
 .padding_newsLetter {
     padding: 10vmin;
     padding-left: 20vmin;

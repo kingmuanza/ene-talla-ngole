@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/ia/database.service';
 import { ActivatedRoute } from '@angular/router';
+import { Oeuvre } from 'src/app/models/oeuvre.model';
 
 @Component({
   selector: 'app-view-artiste',
@@ -11,8 +12,17 @@ export class ViewArtisteComponent implements OnInit {
 
   artiste;
   oeuvres = [];
+  oeuvre = new Oeuvre();
 
   constructor(private route: ActivatedRoute, private database: DatabaseService) { }
+
+  ouvrir(oeuvre) {
+    console.log('Muanza le mignon');
+    console.log(oeuvre);
+    this.oeuvre = oeuvre;
+    const modal = $('#viewoeuvre') as any;
+    modal.modal('show');
+  }
 
   ngOnInit() {
     this.route.paramMap.subscribe(ParamsAsMap => {

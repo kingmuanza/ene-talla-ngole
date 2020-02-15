@@ -1,6 +1,6 @@
 <div *ngIf="oeuvre" class="ombre hauteur_oeuvre"
     style="cursor: pointer; border: 1px solid #eee; overflow: hidden">
-    <div class="hauteur_oeuvre" style="background-color: #eee; background-size: cover; background-position: center center"
+    <div class="muanza-image hauteur_oeuvre" style="background-color: #eee; background-size: cover; background-position: center center"
         [ngStyle]="{'background-image':'url('+oeuvre.src+')'}">
     </div>
 </div>
@@ -19,8 +19,8 @@
                     {{oeuvre.nom}}
                 </span>
                 <span class="float_droite">
-                    {{devise()}}
                     {{prix(oeuvre.prix)  | currency:'XAF':''}}
+                    {{devise()}}
                 </span>
             </h5>
             <h3 style="margin-top: -10px;">

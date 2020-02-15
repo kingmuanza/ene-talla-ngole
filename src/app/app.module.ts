@@ -52,6 +52,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ChangerPasseComponent } from './pages/changer-passe/changer-passe.component';
 
 import { NotifierModule } from 'angular-notifier';
+import { NgxPayPalModule } from 'ngx-paypal';
+import { HttpClientModule } from '@angular/common/http';
 
 const FIREBASE_CONFIG = {
   apiKey: 'AIzaSyA6BzmVk6TAmQka4-sZVsHmc94ZSXmMRZU',
@@ -112,6 +114,8 @@ const FIREBASE_CONFIG = {
     AngularFontAwesomeModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFirestoreModule,
+    NgxPayPalModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes),
     NotifierModule.withConfig({
       position: {

@@ -16,26 +16,30 @@
 
             <div class="col-lg-8" style="padding-right: 40px;">
                 <p class="lead text-justify">
-                    L'équipe Enediart, est à votre écoute. Vous pouvez nous contacter par mail ou en utilisant une des
-                    options ci-dessous. Nous prendrons connaissance de votre message et y apporterons une réponse si
-                    cela
-                    est nécessaire.
+                    L'équipe Enediart, est à votre écoute. 
+                    Laissez-nous un message !
 
                 </p>
-                <ul class="lead">
-
-                    <li>
-                        Si vous êtes un professionnel possédant des tableaux :
-                        <ul>
-                            <li>
-                                Vous pouvez nous écrire pour nous dire à peu près tout et n'importe quoi : que ce soit
-                                pour
-                                nous signaler l'existence d'un commerce, ou simplement pour faire passer des messages !
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                <div>
+                    <form [formGroup]="contactForm" (ngSubmit)="onSubmitContactForm()">
+                        <div>
+                            <input formControlName="email" type="email" class="form-control"
+                                 placeholder="Email">
+                        </div>
+                        <div style="padding-top: 10px;">
+                            <textarea formControlName="message" class="form-control"
+                                 placeholder="Votre message ici"></textarea>
+                        </div>
+                        <div style="padding-top: 10px;">
+                            <button [disabled]="contactForm.invalid" class="btn btn-success" style="margin-right: 20px;" type="submit">
+                                Envoyer
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<notifier-container></notifier-container>

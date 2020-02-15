@@ -25,6 +25,19 @@
     display: none;
 }
 
+ul {
+    li {
+        a {
+            opacity: 1;
+            transition: letter-spacing 400ms, opacity 1s 200ms;
+            &:hover {
+                letter-spacing: 0.05em;
+                opacity: 0.7;
+            }
+        }
+    }
+}
+
 @media only screen and (max-width: 500px) {
     .brand_image {
         height: 40px;

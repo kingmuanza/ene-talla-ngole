@@ -5,14 +5,25 @@ export class Oeuvre {
     id;
     nom;
     src;
-    prix;
+    prix: number;
     artiste: Artiste;
     notation: number;
     description: string;
+    likes: number;
+    dislikes: number;
+    theme?: string;
+    style?: string;
+    largeur?: string;
+    longueur?: string;
+    dimensions?: string;
+    annee?: string;
+    technique?: string;
 
     constructor() {
         this.id = this.uid();
         this.notation = 0;
+        this.likes = 0;
+        this.dislikes = 0;
     }
 
     uid() {

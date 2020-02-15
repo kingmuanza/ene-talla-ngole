@@ -1,1 +1,254 @@
-<p>edit-paiement works!</p>
+<div style="margin-top: -70px;">
+    <div class="arriereplan" style="border-bottom: 0px solid #333; overflow: hidden">
+        <div class="hideOnMobile"
+            style=" background: linear-gradient(to top, rgba(0,10,0,0.8), #0f9b0f); padding-top: 0vmin; padding-bottom: 0vmin;">
+            <div class="hideOnMobile" style="padding: 5vmin">
+                <h1 id="titre_page" class="display-4 africa" style="color: #fff; cursor: pointer!important;">
+                    <b>Paiement</b>
+
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="artistes">
+    <div style="min-height: 100vh; margin-top: 0vmin">
+        <div class="">
+            <div>
+                <div class="row">
+                    <div class="col-lg-4" style="padding: 2vmin ; padding-left: 7vmin; background-color: #fafafa">
+                        <h1 class="africa">Total à payer</h1>
+                        <div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Libellé</th>
+                                        <th scope="col" style="text-align: right">Montant</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Montant HT</th>
+                                        <td style="text-align: right">
+                                            {{devise()}}
+                                            {{prix(total)  | currency:'XAF':''}}
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Taxe</th>
+                                        <td style="text-align: right">
+                                            {{devise()}}
+                                            {{prix(total * taxe)  | currency:'XAF':''}}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th scope="col">Montant TTC</th>
+                                        <th scope="col" style="text-align: right">
+                                            {{devise()}}
+                                            {{prix(total * taxe + total) | currency:'XAF':''}}
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                            <p *ngIf="utilisateur" style="padding-top: 10px;">
+                                <a onclick="console.log('Je clique')" routerLink="/paiement"
+                                    class="btn btn-lg btn-outline-secondary" style="cursor: pointer!important;">
+                                    Passer au paiement
+                                </a>
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-8" style="padding: 3vmin; padding-right: 7vmin;">
+                        <ng-container *ngIf="utilisateur">
+                            <div *ngIf="!utilisateur.adresse">
+                                <span style="color:red">
+                                    *
+                                </span>
+                                Vous n'avez aucune adresse de livraison
+                                <form [formGroup]="profilForm" (ngSubmit)="onSubmitProfilForm()"
+                                    style="padding-top: 3vmin; ">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                Numéro de téléphone
+                                            </span>
+                                        </div>
+                                        <input formControlName="tel" type="text" class="form-control">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                Pays
+                                            </span>
+                                        </div>
+                                        <input formControlName="pays" type="text" class="form-control">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                Ville
+                                            </span>
+                                        </div>
+                                        <input formControlName="ville" type="text" class="form-control">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                Adresse de livraison
+                                            </span>
+                                        </div>
+                                        <input formControlName="adresse" type="text" class="form-control">
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text" for="inputGroupSelect01">Devise</label>
+                                        </div>
+                                        <select formControlName="devise" class="custom-select" id="inputGroupSelect01">
+                                            <option value="fcfa">XAF</option>
+                                            <option value="euro">Euro</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <button type="submit" [disabled]="profilForm.invalid" class="btn btn-success">
+                                            Enregistrer
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </ng-container>
+                        <div *ngIf="utilisateur" style="padding-left: 3vmin;">
+                            <h4 class="africa">
+                                Choisir un mode de paiement
+                            </h4>
+                            <div class="row" style="margin-top: 20px;;">
+                                <div class="col-lg-4">
+                                    <!-- Button trigger modal -->
+                                    <button type="image"
+                                        style="width : 250px; height: 100px; background-image: url('https://developer.mtn.cm/OnlineMomoWeb/console/uses/itg_img/buttons/MOMO_buy_now_VF.jpg'); background-size: 100% auto; border-width: 0px;"
+                                        data-toggle="modal" data-target="#exampleModal">
+
+                                    </button>
+                                </div>
+                                <div class="col-lg-1">
+
+                                </div>
+                                <div class="col-lg-7">
+                                    <div style="margin-left:15px;;">
+
+                                        <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div  *ngIf="!utilisateur" class="row" style="padding-top: 0px;">
+                            <div class="col-sm-12">
+                                <h1 class="africa" style="color:#111">
+                                    <b style="font-size: 1.5em">CONNEXION</b>
+                                </h1>
+                                <p class="lead">
+                                    Pour pouvoir acheter des articles sur notre site,
+                                    vous devez posséder un compte. Si vous en possédez déjà un,
+                                    veuillez-vous identifier sinon inscrivez-vous en une minute
+                                </p>
+                                <form [formGroup]="connexionForm" (ngSubmit)="onSubmitConnexionForm()">
+
+                                    <div class="row">
+                                        <div class="col-lg-4" style="padding-top: 10px">
+                                            <input formControlName="login" type="email" name="login"
+                                                class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" placeholder="Login">
+
+                                        </div>
+                                        <div class="col-lg-4" style="padding-top: 10px">
+                                            <input formControlName="passe" type="password" name="passe"
+                                                class="form-control" id="exampleInputPassword1"
+                                                placeholder="Mot de passe">
+                                        </div>
+                                        <div class="col-lg-4" style="padding-top: 10px;">
+                                            <button id="connexion" class="btn btn-success" style="margin-right: 20px;"
+                                                type="submit">
+                                                Connexion
+                                            </button>
+                                            <a routerLink="/inscription" class="btn btn-light">S'inscrire</a>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 20px; color:#fafafa">
+
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Effectuer la transaction
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formmomo" method="GET"
+                    action="https://developer.mtn.cm/OnlineMomoWeb/faces/transaction/transactionRequest.xhtml"
+                    target="_blank">
+                    <input type="hidden" name="idbouton" value="2" autocomplete="off">
+                    <input type="hidden" name="typebouton" value="PAIE" autocomplete="off">
+                    <!-- ng-value="(controller.total * controller.taxe + controller.total).toFixed(0)" -->
+                    <input class="momo mount" type="hidden" placeholder="" name="_amount" value="1000" id="montant"
+                        autocomplete="off">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                Numéro MTN
+                            </span>
+                        </div>
+                        <input class="form-control" type="text" placeholder="" name="_tel" value="678116190"
+                            autocomplete="off">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                Montant à payer
+                            </span>
+                        </div>
+                        <input readonly class="form-control" type="text" placeholder="" name="_amount"
+                            ng-value="(controller.total * controller.taxe + controller.total).toFixed(0)" id="montant"
+                            autocomplete="off">
+
+                    </div>
+                    <input class="momo pwd" placeholder="" name="_clP" value="Hermann*_91" autocomplete="off"
+                        type="hidden">
+                    <input type="hidden" name="_email" value="kembuysarl@gmail.com" autocomplete="off">
+                    <input type="image" id="Button_Image"
+                        src="https://developer.mtn.cm/OnlineMomoWeb/console/uses/itg_img/buttons/MOMO_buy_now_VF.jpg"
+                        style="width : 250px; height: 100px;" name="submit"
+                        alt="OnloneMomo, le réflexe sécurité pour payer en ligne" autocomplete="off">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                <button ng-click="controller.payer()" type="button" data-dismiss="modal"
+                    class="btn btn-warning">Confirmer la transaction</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<notifier-container></notifier-container>

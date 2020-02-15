@@ -1,10 +1,10 @@
 <div class="row" *ngIf="oeuvre">
-    <div class="col-lg-8" style="margin:0; padding:0">
-        <img [src]="oeuvre.src" style="width: 100%">
+    <div class="" style="margin:0; padding:0">
+        <img class="image-oeuvre" [src]="oeuvre.src" style="">
     </div>
-    <div class="col-lg-4" style="margin:0; padding:0">
-        <div style="padding: 20px; padding-left: 30px;">
-            <h2 class="africa">
+    <div class="" style="margin:0; padding:0; min-width: 30vw; height: 80vh; overflow-y: hidden;">
+        <div style="padding: 20px; padding-left: 30px; width: 30vw; overflow: hidden;">
+           <h2 class="africa">
                 {{oeuvre.nom}}
 
             </h2>
@@ -14,17 +14,49 @@
                 {{oeuvre.artiste.prenom}},
                 {{oeuvre.artiste.pays}}
             </p>
-            <h2 style="margin-top: -10px;">
+            <div style="margin-top: -17px;">
+                <b style="font-size: 1.2em; color: #444;">
+                    {{oeuvre.dimensions}}
+                </b>
+            </div>
+            <h2 style="margin-top: 5px;">
                 <app-display-notation [notation]="oeuvre.notation"></app-display-notation>
             </h2>
+            <div *ngIf="oeuvre.annee || oeuvre.technique" style="margin-top: 0px;">
+                <b *ngIf="oeuvre.annee" style="font-size: 1.2em; color: #444;">
+                    {{oeuvre.annee}}<span *ngIf="oeuvre.technique">,</span>
+                </b>
+                <b *ngIf="oeuvre.technique" style="font-size: 1.2em; color: #444;">
+                    {{oeuvre.technique}}
+                </b>
+            </div>
 
-            <p class="lead" style="color: #ccc">
-                Notation : {{oeuvre.description ? oeuvre.description:"Aucune description"}}
+            <p class="lead" style="color: #444">
+                {{oeuvre.description ? oeuvre.description:"Aucune description"}}
             </p>
-            <h1 class="africa" style="padding-top: 0px;">
-                {{devise()}}
+            <div style="margin-bottom: 20px;">
+                <span class="muanza-style" *ngIf="oeuvre.style">
+                    {{oeuvre.style}}
+                </span>
+                <span class="muanza-theme" *ngIf="oeuvre.style">
+                    {{oeuvre.theme}}
+                </span>
+            </div>
+            <h1 *ngIf="oeuvre.prix" class="africa" style="padding-top: 0px;">
                 {{prix(oeuvre.prix)  | currency:'XAF':''}}
+                {{devise()}}
             </h1>
+            <!---
+            <p *ngIf="!oeuvre.prix" style="padding-top: 10px" *ngIf="!estPresent">
+                <a class="btn btn-lg btn-outline-secondary"
+                    style="cursor: pointer!important;">
+                    <fa name="shopping-cart"></fa>
+                    <span style="padding-left: 10px;">
+                        Demander le prix
+                    </span>
+                </a>
+            </p>
+        -->
             <p style="padding-top: 10px" *ngIf="!estPresent">
                 <a (click)="ajouterAuPanier()" class="btn btn-lg btn-outline-secondary"
                     style="cursor: pointer!important;">
@@ -41,8 +73,13 @@
 
                 </a>
             </p>
+            <notifier-container></notifier-container>
         </div>
+        <div *ngIf="utilisateur.isAdmin" style="padding: 20px; padding-left: 30px;">
+            <a (click)="edit(oeuvre)" style="cursor: pointer;">
+                Modifier l'oeuvre
+            </a>
+        </div>
+        
     </div>
 </div>
-
-<notifier-container></notifier-container>

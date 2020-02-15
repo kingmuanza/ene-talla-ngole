@@ -18,12 +18,18 @@ import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
 import { RechercherComponent } from './pages/rechercher/rechercher.component';
 import { ChangerPasseComponent } from './pages/changer-passe/changer-passe.component';
+import { ListPaiementComponent } from './pages/paiement/list-paiement/list-paiement.component';
+import { EditPaiementComponent } from './pages/paiement/edit-paiement/edit-paiement.component';
+import { MentionsLegalesComponent } from './pages/mentions-legales/mentions-legales.component';
 
 export const appRoutes: Routes = [
     { path: 'accueil', component: AccueilComponent },
     { path: 'contacteznous', component: ContactusComponent },
+    { path: 'mentions-legales', component: MentionsLegalesComponent },
     { path: 'eneditrip', component: EneditripComponent },
     { path: 'panier', component: ListCommandeComponent },
+    { path: 'paiement', component: EditPaiementComponent },
+    { path: 'paiements', component: ListPaiementComponent },
     { path: 'connexion', component: ConnexionComponent },
     { path: 'inscription', component: InscriptionComponent },
     { path: 'rechercher', component: RechercherComponent },

@@ -12,9 +12,11 @@
                     
                     <div class="row">
                         <div class="col-lg-4" style="padding-top: 10px">
-                            <input formControlName="login" type="email" name="login" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Login">
-
+                            <input formControlName="login" type="email" class="form-control"
+                                placeholder="Login">
+                            <small class="text-white">
+                                Veuillez rentrer un email valide
+                            </small>
                         </div>
                         <div class="col-lg-4" style="padding-top: 10px">
                             <input formControlName="passe" type="password" name="passe" class="form-control"
@@ -24,7 +26,7 @@
                             <button id="connexion" class="btn btn-success" style="margin-right: 20px;" type="submit">
                                 Connexion
                             </button>
-                            <a routerLink="/inscription" class="btn btn-light">S'enregistrer</a>
+                            <a routerLink="/inscription" class="btn btn-light">S'inscrire</a>
                         </div>
                     </div>
                     <div style="margin-top: 20px; color:#fafafa">

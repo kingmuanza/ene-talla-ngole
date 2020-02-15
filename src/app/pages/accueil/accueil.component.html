@@ -13,7 +13,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <h4 class="animated fadeInLeft delay-1s"
-                                    style="line-height: 0.85; width: 80vw; padding-left: 15vw; padding-right: 5vw; padding-top: 15vmin; color:#fff;">
+                                    style="line-height: 0.85; width: 80vw; padding-left: 15vw; padding-right: 5vw; padding-top: 10vmin; color:#fff;">
                                     <span class="manuscrit">
                                         L'Afrique en vue
                                         <br>
@@ -35,7 +35,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <h4 class="animated fadeInLeft delay-1s"
-                                    style="line-height: 0.85; width: 80vw; padding-left: 15vw; padding-right: 5vw; padding-top: 15vmin; color:#fff;">
+                                    style="line-height: 0.85; width: 80vw; padding-left: 15vw; padding-right: 5vw; padding-top: 10vmin; color:#fff;">
                                     <span class="manuscrit">
                                         L'Afrique en vue
                                         <br>
@@ -57,7 +57,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <h4 class="animated fadeInLeft delay-1s"
-                                    style="line-height: 0.85; width: 80vw; padding-left: 15vw; padding-right: 5vw; padding-top: 15vmin; color:#fff;">
+                                    style="line-height: 0.85; width: 80vw; padding-left: 15vw; padding-right: 5vw; padding-top: 10vmin; color:#fff;">
                                     <span class="manuscrit">
                                         L'Afrique en vue
                                         <br>
@@ -111,7 +111,7 @@
                     </div>
                 </div>
                 <div style="padding-bottom: 30px; text-align: center">
-                    <span routerLink="oeuvres" class="carreau titre3 " style="cursor: pointer">
+                    <span routerLink="/oeuvres" class="carreau titre3 " style="cursor: pointer">
                         Voir plus d'oeuvres artistiques
                     </span>
                 </div>
@@ -121,7 +121,46 @@
 
     <div
         style="filter: blur(0px); width: 100%; height: 110vh; background-attachment: fixed;background-size: cover ;  background-image: url('https://firebasestorage.googleapis.com/v0/b/coworking-muanza.appspot.com/o/21.jfif?alt=media&token=88af0b2b-64a2-4066-b9bd-0cb652b990a7')">
+        <div style="height: 110vh; background-color: rgba(0,0,0,0.5); padding: 40px; padding-top: 30vmin;">
 
+            <h1 class="africa" style="color: #fff; text-align: center;">
+                <span style="font-size: 2.5em;">
+
+                    Payez en toute
+                    <br>
+                    <b style="font-size: 1.5em; text-transform: uppercase;">
+                        sécurité
+                    </b>
+                </span>
+            </h1>
+
+        </div>
+    </div>
+    <div style="position: relative; min-height: 30vmin; margin-left: 20vw; margin-right: 20vw; margin-top: -20vmin;">
+        <h5 class="africa" style="text-align: center; color: white; opacity: 0.8;">
+            Nos moyens de paiements
+        </h5>
+        <div class="ombre"
+            style="overflow: hidden; background-color: #fff; padding: 10px; padding-top: 10px; border: 1px solid #aaa; z-index: auto">
+            <div class="row">
+
+                <div class="col-lg-4" style="height: 27vmin; border-right: 0px solid #fff; background-color: #fff;">
+                    <div class="paiement-mm" style="height: 27vmin;">
+
+                    </div>
+                </div>
+                <div class="col-lg-4" style="height: 27vmin; background-color: #fff;border: 1px solid darkblue;">
+                    <div class="paiement-visa" style="height: 27vmin; ">
+
+                    </div>
+                </div>
+                <div class="col-lg-4" style="height: 27vmin;  border-right: 0px solid #fff ;">
+                    <div class="paiement-om" style="height: 27vmin; background-color: #000;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -214,7 +253,7 @@
                 Comment ca marche ?
             </h2>
             <div class="row" style="margin-top: 5vmin">
-                <div class="col-lg-4"  style="margin-bottom: 20px;">
+                <div class="col-lg-4" style="margin-bottom: 20px;">
                     <h1>
                         <fa style="font-size: 1.5em; font-weight: 100;" name="search"></fa>
                     </h1>
@@ -252,32 +291,54 @@
 
     </div>
 
+    <notifier-container></notifier-container>
+
     <div
-        style="background-color: #fff; width: 100%; background-attachment: fixed;background-size: 100% auto ;  ackground-image: url('https://firebasestorage.googleapis.com/v0/b/coworking-muanza.appspot.com/o/27.jfif?alt=media&token=88af0b2b-64a2-4066-b9bd-0cb652b990a7')">
+        style="background-color: rgba(68, 185, 25, 0.9);; width: 100%; background-attachment: fixed;background-size: 100% auto ;  ackground-image: url('https://firebasestorage.googleapis.com/v0/b/coworking-muanza.appspot.com/o/27.jfif?alt=media&token=88af0b2b-64a2-4066-b9bd-0cb652b990a7')">
         <div>
-            <div
+            <div *ngIf="notRegisterInNewsLetter"
                 style="border-radius: 0px; padding-bottom:7vmin; background-color: rgba(68, 185, 25, 0.9); border: 0px solid white">
                 <div style="text-align: center; padding: 5vmin">
                     <h1 class="africa text-white titre_newsLetter" style="">
                         S'inscrire à notre newsletter
                     </h1>
                     <p class="text_newsLetter" style="color:#fefefe; padding-left: 10vmin; padding-right: 10vmin">
-                        Nous vous enverrons régulièrement les nouveautés, les principales actualités sur les artistes et
+                        Nous vous enverrons régulièrement les nouveautés,
+                        <br>
+                        les principales actualités sur les artistes et
+                        <br>
                         la scène artistique africaine.
                     </p>
-                    <div class="padding_input_newsLetter">
+                    <form [formGroup]="newsForm" (ngSubmit)="onSubmitNewsForm()" class="padding_input_newsLetter">
                         <div class="input-group input-group-lg">
-                            <input style="text-align: center;" type="email" class="form-control africa"
-                                placeholder="Email">
+                            <input formControlName="email" style="text-align: center;" type="email"
+                                class="form-control africa" placeholder="Email">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-light" style="">S'inscrire</button>
+                                <button [disabled]="newsForm.invalid" class="btn btn-outline-light"
+                                    style="">S'inscrire</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <div>
 
                     </div>
                 </div>
+            </div>
+            <div *ngIf="!notRegisterInNewsLetter" style="text-align: center; padding-top: 40px; padding-bottom: 40px;">
+                <h1 class="africa animated zoomIn">
+                    <b style="color: white; font-size: 1.5em;">
+                        Merci de vous
+                        être inscrit
+                        <br>
+                        à
+                        notre NewsLetter
+                    </b>
+                </h1>
+                <h1 class="africa animated swing delay-1s">
+                    <b style="color: white; font-size: 1.5em;">
+                        <fa style="font-size: 1.5em; font-weight: 100;" name="check"></fa>
+                    </b>
+                </h1>
             </div>
         </div>
     </div>
@@ -286,7 +347,7 @@
     aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            
+
             <div class="modal-body" style="padding-top: 0; padding-bottom: 0;">
                 <app-view-oeuvre [oeuvre]="oeuvre"></app-view-oeuvre>
             </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/ia/database.service';
+import { Oeuvre } from 'src/app/models/oeuvre.model';
 
 @Component({
     selector: 'app-eneditrip',
@@ -9,8 +10,9 @@ import { DatabaseService } from 'src/app/ia/database.service';
 export class EneditripComponent implements OnInit {
 
     oeuvres = [];
-    oeuvre;
+    oeuvre = new Oeuvre();
     randomList = [];
+    readyToStart = false;
     i = 0;
 
     constructor(private database: DatabaseService) { }
@@ -35,7 +37,18 @@ export class EneditripComponent implements OnInit {
             console.log('item');
             console.log(item);
             this.oeuvres = item;
+            console.log('oeuvres eneditrip');
+            console.log(this.oeuvres);
+            this.oeuvre = this.oeuvres[this.i];
+
+            this.readyToStart = true;
+
         });
+    }
+
+    start() {
+        const modal = $('#enediModal') as any;
+        modal.modal('show');
     }
 
     getOeuvres() {
@@ -58,7 +71,7 @@ export class EneditripComponent implements OnInit {
     }
 
     jaime() {
-        let oeuvre = this.randomList[this.i];
+        let oeuvre = this.oeuvre;
         if (oeuvre.likes) {
             oeuvre.likes = Number(oeuvre.likes) + 1;
         } else {
@@ -72,7 +85,7 @@ export class EneditripComponent implements OnInit {
     }
     jaimePas() {
 
-        let oeuvre = this.randomList[this.i];
+        let oeuvre = this.oeuvre;
         if (oeuvre.dislikes) {
             oeuvre.dislikes = Number(oeuvre.dislikes) + 1;
         } else {
@@ -106,12 +119,12 @@ export class EneditripComponent implements OnInit {
     suivant() {
         console.log('Suivant');
         this.i += 1;
-        if (this.i < this.randomList.length) {
+        if (this.i < this.oeuvres.length) {
 
         } else {
             this.i = 0;
         }
-        this.oeuvre = this.randomList[this.i];
+        this.oeuvre = this.oeuvres[this.i];
     }
 
 }

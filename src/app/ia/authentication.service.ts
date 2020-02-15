@@ -18,6 +18,13 @@ export class AuthenticationService {
   update() {
     this.utilisateurSubject.next(this.utilisateur);
     this.panierSubject.next(this.panier);
+    this.checkIfIsAdmin(this.utilisateur).then((resultat) => {
+      if (resultat) {
+        this.utilisateur.isAdmin = true;
+        this.utilisateurSubject.next(this.utilisateur);
+      }
+    });
+
   }
 
   getPanier() {
@@ -41,6 +48,23 @@ export class AuthenticationService {
 
         }
       });
+    } else {
+      const panierString = localStorage.getItem('ENEDIARTPanier');
+      if (panierString) {
+        // console.log('panierString');
+        // console.log(panierString);
+        try {
+          const panier = JSON.parse(panierString);
+          if (Array.isArray(panier)) {
+            this.panier = panier;
+            this.update();
+          }
+        } catch (e) {
+          this.panier = [];
+          this.update();
+        }
+      }
+
     }
   }
 
@@ -131,7 +155,7 @@ export class AuthenticationService {
 
   }
 
-  checkIfIsAdmin(user) {
+  checkIfIsAdmin(user): Promise<boolean> {
     return new Promise((resolve, reject) => {
       firebase.database().ref('enediart/administrateurs/' + user.uid).once('value').then((snapshot) => {
         if (snapshot.val()) {
@@ -153,6 +177,7 @@ export class AuthenticationService {
       firebase.auth().signOut().then(() => {
         console.log('Déconnexion !');
         this.utilisateur = null;
+        this.panier = null;
         localStorage.removeItem('EnediartUtilisateur');
         localStorage.removeItem('EnediartAdmin');
         resolve(null);

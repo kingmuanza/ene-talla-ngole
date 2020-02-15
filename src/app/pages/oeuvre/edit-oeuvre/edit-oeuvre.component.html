@@ -1,1 +1,162 @@
-<p>edit-oeuvre works!</p>
+<div style="margin-top: -70px;">
+    <div *ngIf="oeuvre" class="arriereplan" [ngStyle]="{'background-image': 'url('+oeuvre.src+')'}"
+        style="min-height: 30vmin; border-bottom: 0px solid #333; overflow: hidden">
+        <div class=""
+            style=" background: linear-gradient(to top, rgba(0,10,0,0.8), rgba(15, 155, 15, 0.8)); padding-top: 10vmin; padding-bottom: 10vmin;">
+            <div class="contenu ">
+                <div class="row" style="margin-bottom: 0px;">
+                    <div class="col-lg-10 col-8">
+                        <h1 id="titre_page" class="display-4 africa" style="color: #fff; cursor: pointer!important;">
+                            <b>
+                                {{oeuvre.nom}}
+                            </b>
+                        </h1>
+                        <div style="margin-top: -10px; color: #fff;">
+                            <span class="text-leader lead">
+                                {{oeuvre.artiste.nom}}
+                                {{oeuvre.artiste.prenom}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div style="min-height: 100vh; margin-top: 5vmin">
+        <div class="contenu" *ngIf="oeuvre">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div>
+                        <form [formGroup]="oeuvreForm" (ngSubmit)="onOeuvreFormSubmit()">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Nom de l'oeuvre
+                                    </span>
+                                </div>
+                                <input formControlName="nom" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Nom de l'oeuvre
+                                    </span>
+                                </div>
+                                <select formControlName="artiste" class="form-control">
+                                    <option [ngValue]="artiste" *ngFor="let artiste of artistes">
+                                        {{artiste.nom}}
+                                        {{artiste.prenom}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Description
+                                    </span>
+                                </div>
+                                <textarea formControlName="description" class="form-control">
+
+                                </textarea>
+                            </div>
+                            
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Prix
+                                    </span>
+                                </div>
+                                <input formControlName="prix" type="number" class="form-control">
+                            </div>
+                            
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Dimensions
+                                    </span>
+                                </div>
+                                <input formControlName="dimensions" type="text" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Année
+                                    </span>
+                                </div>
+                                <input formControlName="annee" type="text" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Technique
+                                    </span>
+                                </div>
+                                <input formControlName="technique" type="text" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Style
+                                    </span>
+                                </div>
+                                <select formControlName="style" class="form-control">
+                                    <option value="0">
+                                        Aucun
+                                    </option>
+                                    <option value="Abstrait">
+                                        Abstrait
+                                    </option>
+                                    <option value="Figuratif">
+                                        Figuratif
+                                    </option>
+                                    <option value="Surréaliste">
+                                        Surréaliste
+                                    </option>
+                                    <option value="Cubiste">
+                                        Cubiste
+                                    </option>
+                                    <option value="Expressionniste">
+                                        Expressionniste
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Thème
+                                    </span>
+                                </div>
+                                <select formControlName="theme" class="form-control">
+                                    <option value="0">
+                                        Aucun
+                                    </option>
+                                    <option value="Paysage">
+                                        Paysage
+                                    </option>
+                                    <option value="Portrait">
+                                        Portrait
+                                    </option>
+                                    <option value="Nature Morte">
+                                        Nature Morte
+                                    </option>
+                                    <option value="Scène Quotidienne">
+                                        Scène Quotidienne
+                                    </option>
+                                </select>
+                            </div>
+                            <div style="padding-top: 10px;">
+                                <button class="btn btn-success">
+                                    Modifier les informations
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<notifier-container></notifier-container>

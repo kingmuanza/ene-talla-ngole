@@ -16,6 +16,8 @@ export class AppComponent implements OnInit {
   @ViewChild('moneyInsideElement', { static: false }) moneyInsideElement;
   utilisateur: Utilisateur;
   utilisateurSubscription: Subscription;
+  panier;
+  panierSubscription: Subscription;
   isAdmin = false;
   userMenuVisible = false;
   moneyMenuVisible = false;
@@ -31,6 +33,12 @@ export class AppComponent implements OnInit {
     };
     firebase.initializeApp(FIREBASE_CONFIG);
   }
+
+  onActivate(event) {
+    console.log('On Activate');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
 
   @HostListener('document:click', ['$event.target']) public onClick(targetElement) {
     if (this.insideElement) {
@@ -54,15 +62,45 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.panierSubscription = this.authentication.panierSubject.subscribe((panier) => {
+      console.log('Prise en compte du changement du panier');
+      this.panier = panier;
+    });
     this.utilisateurSubscription = this.authentication.utilisateurSubject.subscribe((utilisateur) => {
       console.log('Prise en compte du changement d\'utilisateur');
-      this.utilisateur = utilisateur as Utilisateur;
       if (utilisateur) {
+
+        this.utilisateur = utilisateur as Utilisateur;
+        this.panier = this.utilisateur.panier;
         this.checkIfIsAdmin(this.utilisateur);
+      } else {
+        this.panier = [];
       }
     });
     this.authentication.update();
     this.authentication.autoConnexion();
+    this.authentication.getPanier();
+    this.autoRoute();
+  }
+
+  autoRoute() {
+    const recentePageVisitee = localStorage.getItem('EnediartLastRoute');
+    if (recentePageVisitee) {
+      const visitePage = JSON.parse(recentePageVisitee);
+      const dateVisite = new Date(visitePage.date);
+      const diff = this.differenceEntreDeuxDatesEnSecondes(new Date(), dateVisite);
+      if (diff < 5) {
+        this.router.navigate([visitePage.path]);
+      }
+    }
+  }
+
+  differenceEntreDeuxDatesEnSecondes(datePlusGrande, datePlusPetite): number {
+    const startDate = new Date();
+    // Do your operations
+    const endDate = new Date();
+    const seconds = (endDate.getTime() - startDate.getTime()) / 1000;
+    return seconds;
   }
 
   checkIfIsAdmin(user) {
@@ -77,6 +115,8 @@ export class AppComponent implements OnInit {
     this.userMenuVisible = false;
     this.authentication.deconnexion().then(() => {
       this.router.navigate(['accueil']);
+      this.utilisateur = null;
+      this.panier = null;
     }).catch(() => {
       alert('Impossible de vous déconnecter !!');
     });
